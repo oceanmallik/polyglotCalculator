@@ -1,6 +1,7 @@
 # files: 
 calculator
 calculator.o
+subtraction.so
 main
 
 # folders: 
