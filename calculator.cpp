@@ -2,13 +2,14 @@
 #include <Python.h>
 #include <string>
 #include <limits>
+#include <cstdlib>
 
 extern "C" int sub();
 
 int main()
 {
 	char op;
-	std::cout << "Choose operator (+ or -)";
+	std::cout << "Choose operator (+, - or *)";
 	std::cin >> op;
 	// flushes leftover input
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -27,6 +28,11 @@ int main()
 		case '-':
 		{
 			sub();
+			break;
+		}
+		case '*':
+		{
+			system("./multiplication");
 			break;
 		}
 		default:
