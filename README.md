@@ -1,4 +1,4 @@
-[!NOTE]
+> [!NOTE]
 > ONLY ARM64 WORKS FOR NOW
 To compile the c: 
 ```bash
