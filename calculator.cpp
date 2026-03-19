@@ -5,6 +5,7 @@
 #include <cstdlib>
 
 extern "C" int sub();
+extern "C" int divide();
 
 int main()
 {
@@ -37,7 +38,7 @@ int main()
 		}
 		case '/':
 		{
-			std::cout << "Coming Soon" << std::endl;
+			divide();
 			break;
 		}
 		default:
