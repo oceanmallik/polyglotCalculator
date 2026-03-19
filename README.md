@@ -11,12 +11,13 @@ dotnet publish CSharpMath/CSharpMath.csproj -c Release -r linux-arm64
 cp CSharpMath/bin/Release/net10.0/linux-arm64/publish/multiplication .
 ```
 
-To compile the c++:
+### 4. Compile the C++ Orchestrator (The Brain)
+*(This command automatically detects your architecture and links the Python environment)*
 ```bash
 g++ calculator.cpp subtraction.so -o main -Wl,-rpath,. $(python3-config --cflags --embed --libs)
 ```
 
-To run the project: 
+### 5. Run the Project
 ```bash
 ./main
 ```
