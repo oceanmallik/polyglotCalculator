@@ -6,22 +6,35 @@ This project seamlessly links Python, C, C#, and Rust through a master C++ orche
 
 Before building the project, ensure you have the required compilers and SDKs installed for all 5 languages. 
 
-**For Ubuntu/Debian Linux**, you can install the requirements using the commands below:
+## **C / C++:** 
+### For Ubuntu / Debian Linux:
+```bash
+sudo apt update
+sudo apt install build-essential
+```
 
-*   **C or C++:** The standard GNU compilers.
-    ```bash
-    sudo apt update
-    sudo apt install build-essential
-    ```
-*   **Python:** The Python 3 runtime and the C-API development headers (required for `Python.h`).
-    ```bash
-    sudo apt install python3 python3-dev
-    ```
-*   **Rust:** The Rust compiler and Cargo package manager. (It is recommended to use `rustup`).
-    ```bash
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    ```
-*   **C# (.NET 10):** The .NET 10 SDK (required for Native AOT compilation). 
+### For Fedora / RHEL / Bazzite:
+```bash
+sudo dnf install gcc gcc-c++
+```
+## **Python:** 
+### For Ubuntu / Debian Linux:
+```bash
+sudo apt install python3 python3-dev
+```
+### For Fedora / RHEL / Bazzite:
+```bash
+sudo dnf install python3 python3-devel
+```
+    
+## **Rust:** 
+The Rust compiler and Cargo package manager. (It is recommended to use `rustup`).
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+## **C# (.NET 10):** 
+The .NET 10 SDK (required for Native AOT compilation). 
     *Please follow the [Official Microsoft Documentation](https://learn.microsoft.com/en-us/dotnet/core/install/linux) to install the .NET 10 SDK for your specific Linux distribution.*
 
 > [!NOTE]
