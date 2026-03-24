@@ -8,7 +8,7 @@ Before building the project, ensure you have the required compilers and SDKs ins
 
 **For Ubuntu/Debian Linux**, you can install the requirements using the commands below:
 
-*   **C / C++:** The standard GNU compilers.
+*   **C or C++:** The standard GNU compilers.
     ```bash
     sudo apt update
     sudo apt install build-essential
