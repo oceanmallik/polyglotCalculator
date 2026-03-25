@@ -8,6 +8,12 @@ multiplication.so.dbg
 multiplication.so
 multiplication
 libdivision.so
+division.dll
+main.exe
+multiplication.exe
+python314.dll
+python_config.h
+subtraction.dll
 
 # folders: 
 __pycache__/
