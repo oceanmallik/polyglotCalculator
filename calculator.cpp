@@ -4,6 +4,10 @@
 #include <limits>
 #include <cstdlib>
 
+#ifdef _WIN32
+    #include "python_config.h"
+#endif
+
 extern "C" int sub();
 extern "C" int divide();
 
@@ -20,11 +24,18 @@ int main()
 	{
 		case '+':
 		{
-			Py_Initialize();
+            #ifdef _WIN32
+                PyConfig config;
+                PyConfig_InitPythonConfig(&config);
+                PyConfig_SetString(&config, &config.home, PYTHON_HOME_PATH);
+                Py_InitializeFromConfig(&config);
+                PyConfig_Clear(&config);
+            #else
+                Py_Initialize();
+            #endif
+
 			PyRun_SimpleString("import sys; sys.path.append('.')");
-			// Runs on the python file like a command (imports stuff)
 			PyRun_SimpleString("import addition; addition.add()");
-			// Runs addition.py and calls out function add()
 			Py_Finalize();
 			break;
 		}
@@ -35,7 +46,12 @@ int main()
 		}
 		case '*':
 		{
-			system("./multiplication");
+			// only for linux: system("./multiplication");
+            #ifdef _WIN32
+                system("multiplication.exe");
+            #else
+                system("./multiplication");
+            #endif
 			break;
 		}
 		case '/':
