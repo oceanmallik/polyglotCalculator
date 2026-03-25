@@ -6,6 +6,8 @@ This project seamlessly links Python, C, C#, and Rust through a master C++ orche
 
 Before building the project, ensure you have the required compilers and SDKs installed for all 5 languages. 
 
+This is the linux guide. For windows version, scroll down a bit. 
+
 ## **C / C++:** 
 ### For Ubuntu / Debian Linux:
 ```bash
@@ -57,7 +59,7 @@ chmod +x build.sh
 
 ---
 
-# 🛠️ Manual Compilation Steps
+## 🛠️ Manual Compilation Steps
 
 If you prefer to compile each language manually, follow these steps based on your a
 
@@ -97,3 +99,47 @@ g++ calculator.cpp subtraction.so libdivision.so -o main -Wl,-rpath,. $(python3-
 ```bash
 ./main
 ```
+
+
+# For Windows
+Open **PowerShell** in the project folder and run:
+`powershell
+# 1. Run the build script (Bypasses local execution policy for this script only)
+```bash
+powershell.exe -ExecutionPolicy Bypass -File .\build.ps1
+```
+
+# 2. Run the Polyglot Calculator
+```bash
+.\main.exe
+```
+
+---
+
+## 🛠️ Manual Compilation Steps (Advanced)
+
+If you prefer to compile each language manually, follow these steps.
+
+### 1. Compile the C Library (Subtraction)
+* **Linux:** `gcc -shared -o subtraction.so -fPIC subtraction.c`
+* **Windows:** `gcc -shared -o subtraction.dll subtraction.c`
+
+### 2. Compile the C# Executable (Multiplication)
+* **Linux (x64):** `dotnet publish CSharpMath/CSharpMath.csproj -c Release -r linux-x64`
+* **Windows:** `dotnet publish CSharpMath/CSharpMath.csproj -c Release -r win-x64`
+*(Copy the resulting executable to the main project directory).*
+
+### 3. Compile the Rust Library (Division)
+`bash
+cd division
+cargo build --release
+cd ..
+`
+*(Copy `libdivision.so` (Linux) or `division.dll` (Windows) from the `target/release` folder to the main project directory).*
+
+### 4. Compile the C++ Orchestrator (The Brain)
+* **Linux:** `bash
+g++ calculator.cpp subtraction.so libdivision.so -o main -Wl,-rpath,. $(python3-config --cflags --embed --libs)
+`
+* **Windows:**
+*(You must generate `python_config.h` and explicitly link your Python `include` and `libs` paths. See `build.ps1` for the automated approach).*
